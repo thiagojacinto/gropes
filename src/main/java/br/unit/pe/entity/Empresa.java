@@ -14,7 +14,7 @@ public class Empresa {
 	private Long id;
 	@NotNull
 	private String descricao;
-	private boolean autonomo;
+	private char autonomo;
 
 	public Long getId() {
 		return id;
@@ -32,11 +32,11 @@ public class Empresa {
 		this.descricao = descricao;
 	}
 
-	public boolean isAutonomo() {
+	public char isAutonomo() {
 		return autonomo;
 	}
 
-	public void setAutonomo(boolean autonomo) {
+	public void setAutonomo(char autonomo) {
 		this.autonomo = autonomo;
 	}
 
