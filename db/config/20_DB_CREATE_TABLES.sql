@@ -2,7 +2,7 @@
 
 CREATE TABLE public.empresa
 (
-    id bigint NOT NULL DEFAULT nextval('empresa_id_seq'::regclass),
+    id bigint NOT NULL,
     autonomo boolean NOT NULL,
     descricao character varying(255) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT empresa_pkey PRIMARY KEY (id)
@@ -17,7 +17,7 @@ ALTER TABLE public.empresa
 
 CREATE TABLE public.tecnologia
 (
-    id bigint NOT NULL DEFAULT nextval('tecnologia_id_seq'::regclass),
+    id bigint NOT NULL,
     descricao character varying(255) COLLATE pg_catalog."default" NOT NULL,
     relevancia double precision,
     CONSTRAINT tecnologia_pkey PRIMARY KEY (id)
@@ -32,7 +32,7 @@ ALTER TABLE public.tecnologia
 
 CREATE TABLE public.usuario
 (
-    id bigint NOT NULL DEFAULT nextval('usuario_id_seq'::regclass),
+    id bigint NOT NULL,
     nascimento timestamp without time zone,
     nome character varying(100) COLLATE pg_catalog."default" NOT NULL,
     score double precision,
@@ -74,7 +74,7 @@ ALTER TABLE public.tecnologia_usuario
 
 CREATE TABLE public.empresa_usuario
 (
-    id bigint NOT NULL DEFAULT nextval('empresa_usuario_id_seq'::regclass),
+    id bigint NOT NULL,
     complexidade integer,
     data_fim timestamp without time zone,
     data_ini timestamp without time zone,
