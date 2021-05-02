@@ -26,13 +26,16 @@ public class UsuarioService {
 	public Optional<Usuario> findByNome(String nome) {
 		return usuarioRepository.findByNome(nome);
 	}
-	public Usuario inserir(Usuario usuario) {
+	public Usuario salvar(Usuario usuario) {
 		return usuarioRepository.save(usuario);
 	}
 	public Optional<Usuario> findById(long id) {
 		return usuarioRepository.findById(id);
 	}
-	public void excluir(Usuario usuario) throws UserNotFoundException {
+	public void excluir(Usuario usuario) {
 		usuarioRepository.delete(usuario);
+	}
+	public boolean existe(long id) {
+		return usuarioRepository.existsById(id);
 	}
 }
