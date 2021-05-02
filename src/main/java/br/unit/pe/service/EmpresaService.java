@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.unit.pe.entity.Empresa;
+import br.unit.pe.model.Empresa;
 import br.unit.pe.repository.EmpresaRepository;
 
 @Service

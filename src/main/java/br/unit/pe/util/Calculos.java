@@ -2,9 +2,10 @@ package br.unit.pe.util;
 
 import java.util.List;
 import java.util.Objects;
-import br.unit.pe.entity.EmpresaUsuario;
-import br.unit.pe.entity.EmpresaUsuarioItem;
-import br.unit.pe.entity.TecnologiaUsuario;
+
+import br.unit.pe.model.EmpresaUsuario;
+import br.unit.pe.model.EmpresaUsuarioItem;
+import br.unit.pe.model.TecnologiaUsuario;
 
 public class Calculos {
 

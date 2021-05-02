@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.unit.pe.entity.TecnologiaUsuario;
+import br.unit.pe.model.TecnologiaUsuario;
 import br.unit.pe.repository.TecnologiaUsuarioRepository;
 
 @Service

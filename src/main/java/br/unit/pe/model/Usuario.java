@@ -1,4 +1,4 @@
-package br.unit.pe.entity;
+package br.unit.pe.model;
 
 import java.util.Date;
 

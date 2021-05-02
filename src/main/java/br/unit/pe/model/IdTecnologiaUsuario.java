@@ -1,16 +1,16 @@
-package br.unit.pe.entity;
+package br.unit.pe.model;
 
 import java.io.Serializable;
 
-public class IdEmpresaUsuarioItem implements Serializable {
+public class IdTecnologiaUsuario implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private EmpresaUsuario empUsu;
+	private Usuario usuario;
 	private Tecnologia tecnologia;
-
+	
 	@Override
 	public int hashCode() {
 		return super.hashCode();
@@ -20,5 +20,4 @@ public class IdEmpresaUsuarioItem implements Serializable {
 	public boolean equals(Object obj) {
 		return super.equals(obj);
 	}
-
 }
