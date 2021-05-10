@@ -2,6 +2,7 @@ package br.unit.pe.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,15 @@ public class Usuario {
 	private String nome;
 	private Date nascimento;
 	private Double score;
-
+	//atributos extras
+	@Column(unique=true)
+	private String email;
+	private String senha;
+	private String rua;
+	private String numero;
+	private String complemento;
+	private String cep;
+	//
 	public Long getId() {
 		return id;
 	}
@@ -52,5 +61,54 @@ public class Usuario {
 	public void setScore(Double score) {
 		this.score = score;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	
 
 }

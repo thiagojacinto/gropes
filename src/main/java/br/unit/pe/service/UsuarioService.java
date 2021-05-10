@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.unit.pe.exception.ListaVaziaException;
-import br.unit.pe.exception.UserNotFoundException;
 import br.unit.pe.model.Usuario;
 import br.unit.pe.repository.UsuarioRepository;
 
@@ -37,5 +36,12 @@ public class UsuarioService {
 	}
 	public boolean existe(long id) {
 		return usuarioRepository.existsById(id);
+	}
+
+	public boolean login(String email,String senha) {
+		if (usuarioRepository.login(email, senha).isPresent()) {
+			return true;
+		}
+		return false;
 	}
 }
