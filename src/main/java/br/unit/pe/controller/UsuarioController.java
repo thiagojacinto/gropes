@@ -24,6 +24,8 @@ import br.unit.pe.exception.UserNotFoundException;
 import br.unit.pe.model.EmpresaDTO;
 import br.unit.pe.model.EmpresaUsuarioDTO;
 import br.unit.pe.model.EmpresaUsuarioItemDTO;
+import br.unit.pe.model.Tecnologia;
+import br.unit.pe.model.TecnologiaDTO;
 import br.unit.pe.model.TecnologiaUsuarioDTO;
 import br.unit.pe.model.Usuario;
 import br.unit.pe.model.UsuarioDTO;
@@ -112,7 +114,9 @@ public class UsuarioController {
 		}
 		ArrayList b = (ArrayList) payload.get("pessoais");
 		for (Object object : b) {
+			TecnologiaDTO t = modelMapper.map(object, TecnologiaDTO.class);
 			TecnologiaUsuarioDTO tu = modelMapper.map(object, TecnologiaUsuarioDTO.class);
+			tu.setTecnologia(t);
 			System.out.println(tu);
 		}
 
