@@ -40,4 +40,10 @@ public class Tecnologia {
 		this.relevancia = relevancia;
 	}
 
+	@Override
+	public String toString() {
+		return "Tecnologia [id=" + id + ", descricao=" + descricao + ", relevancia=" + relevancia + "]";
+	}
+
+	
 }

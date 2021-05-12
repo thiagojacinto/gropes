@@ -17,4 +17,8 @@ public class EmpresaUsuarioService {
 	public List<EmpresaUsuario> listar() {
 		return repository.findAll();
 	}
+
+	public EmpresaUsuario salvar(EmpresaUsuario empresaUsuario) {
+		return repository.save(empresaUsuario);
+	}
 }

@@ -88,4 +88,11 @@ public class EmpresaUsuario {
 		this.complexidade = complexidade;
 	}
 
+	@Override
+	public String toString() {
+		return "EmpresaUsuario [id=" + id + ", empresa=" + empresa + ", usuario=" + usuario + ", dataIni=" + dataIni
+				+ ", dataFim=" + dataFim + ", diversidade=" + diversidade + ", complexidade=" + complexidade + "]";
+	}
+
+	
 }

@@ -7,7 +7,6 @@ public class EmpresaUsuarioItemDTO {
 	private EmpresaUsuarioDTO empresaUsuario;
 	private Date dataIni;
 	private Date dataFim;
-	private boolean trabalhoAtual;
 
 	public EmpresaUsuarioDTO getEmpresaUsuario() {
 		return empresaUsuario;
@@ -32,19 +31,11 @@ public class EmpresaUsuarioItemDTO {
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
-
-	public boolean isTrabalhoAtual() {
-		return trabalhoAtual;
-	}
-
-	public void setTrabalhoAtual(boolean trabalhoAtual) {
-		this.trabalhoAtual = trabalhoAtual;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "EmpresaUsuarioItemDTO [empresaUsuario=" + empresaUsuario + ", dataIni=" + dataIni + ", dataFim="
-				+ dataFim + ", trabalhoAtual=" + trabalhoAtual + "]";
+				+ dataFim + "]";
 	}
 
 }

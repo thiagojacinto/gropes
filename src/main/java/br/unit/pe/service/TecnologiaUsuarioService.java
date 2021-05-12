@@ -23,6 +23,10 @@ public class TecnologiaUsuarioService {
 	public Date minConheceDesde() {
 		return tecUsuRepository.minConheceDesde();
 	}
+
+	public TecnologiaUsuario salvar(TecnologiaUsuario tecnologiaUsuario) {
+		return tecUsuRepository.save(tecnologiaUsuario);
+	}
 	
 	
 }

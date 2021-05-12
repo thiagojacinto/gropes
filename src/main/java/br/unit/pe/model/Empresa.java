@@ -14,7 +14,7 @@ public class Empresa {
 	private Long id;
 	@NotNull
 	private String descricao;
-	private char autonomo;
+	private Character autonomo;
 
 	public Long getId() {
 		return id;
@@ -32,12 +32,18 @@ public class Empresa {
 		this.descricao = descricao;
 	}
 
-	public char isAutonomo() {
+	public Character isAutonomo() {
 		return autonomo;
 	}
 
-	public void setAutonomo(char autonomo) {
+	public void setAutonomo(Character autonomo) {
 		this.autonomo = autonomo;
 	}
+
+	@Override
+	public String toString() {
+		return "Empresa [id=" + id + ", descricao=" + descricao + ", autonomo=" + autonomo + "]";
+	}
+	
 
 }

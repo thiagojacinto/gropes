@@ -8,8 +8,8 @@ public class IdEmpresaUsuarioItem implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private EmpresaUsuario empUsu;
-	private Tecnologia tecnologia;
+	private Long empUsu;
+	private Long tecnologia;
 
 	@Override
 	public int hashCode() {

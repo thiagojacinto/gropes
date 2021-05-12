@@ -29,7 +29,7 @@ public class Usuario {
 	private String numero;
 	private String complemento;
 	private String cep;
-	//
+	
 	public Long getId() {
 		return id;
 	}
@@ -109,6 +109,12 @@ public class Usuario {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", nascimento=" + nascimento + ", score=" + score + ", email="
+				+ email + ", senha=" + senha + ", rua=" + rua + ", numero=" + numero + ", complemento=" + complemento
+				+ ", cep=" + cep + "]";
+	}
+	
 }

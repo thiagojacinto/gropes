@@ -80,4 +80,11 @@ public class TecnologiaUsuario {
 		this.estudouAte = estudouAte;
 	}
 
+	@Override
+	public String toString() {
+		return "TecnologiaUsuario [usuario=" + usuario + ", tecnologia=" + tecnologia + ", inovatividade="
+				+ inovatividade + ", conheceDesde=" + conheceDesde + ", estudaDesde=" + estudaDesde + ", estudouAte="
+				+ estudouAte + "]";
+	}
+	
 }

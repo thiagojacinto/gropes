@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.unit.pe.model.Empresa;
+import br.unit.pe.model.EmpresaUsuarioItem;
 
 @Repository
-public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
+public interface EmpresaUsuarioItemRepository extends JpaRepository<EmpresaUsuarioItem, Long> {
 
-	Optional<Empresa> findByDescricao(String descricao);
 }

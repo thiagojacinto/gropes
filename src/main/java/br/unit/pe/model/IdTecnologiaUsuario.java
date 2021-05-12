@@ -8,8 +8,8 @@ public class IdTecnologiaUsuario implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Usuario usuario;
-	private Tecnologia tecnologia;
+	private Long usuario;
+	private Long tecnologia;
 	
 	@Override
 	public int hashCode() {

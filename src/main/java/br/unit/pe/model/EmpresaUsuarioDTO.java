@@ -11,6 +11,7 @@ public class EmpresaUsuarioDTO {
 	private Integer dificuldade;
 	private List<TecnologiaDTO> tecnologias;
 	private String descricao;
+	private boolean trabalhoAtual;
 
 	public String getDescricao() {
 		return descricao;
@@ -59,12 +60,19 @@ public class EmpresaUsuarioDTO {
 	public void setTecnologias(List<TecnologiaDTO> tecnologias) {
 		this.tecnologias = tecnologias;
 	}
+	
+	public boolean isTrabalhoAtual() {
+		return trabalhoAtual;
+	}
+
+	public void setTrabalhoAtual(boolean trabalhoAtual) {
+		this.trabalhoAtual = trabalhoAtual;
+	}
 
 	@Override
 	public String toString() {
 		return "EmpresaUsuarioDTO [empresa=" + empresa + ", dataIni=" + dataIni + ", dataFim=" + dataFim
-				+ ", dificuldade=" + dificuldade + ", tecnologias=" + tecnologias + "descricao=" + descricao + "]";
+				+ ", dificuldade=" + dificuldade + ", tecnologias=" + tecnologias + ", descricao=" + descricao
+				+ ", trabalhoAtual=" + trabalhoAtual + "]";
 	}
-
-	
 }
