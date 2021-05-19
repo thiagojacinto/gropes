@@ -1,0 +1,92 @@
+{
+	"id": "439767e2-e7f6-4cf8-a800-1e798aa27ddf",
+	"name": "gropes-API",
+	"timestamp": "2021-05-19T02:14:34.722Z",
+	"collection_id": "0e1be20d-613d-48d3-abaa-ccfec75c9bd2",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 2,
+	"totalFail": 2,
+	"results": [
+		{
+			"id": "e4d99a27-bcee-4b54-b891-d0ba4536763e",
+			"name": "registrarComSucesso",
+			"url": "http://localhost:8080/usuarios",
+			"time": 20,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response ID should exist and be a number": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response ID should exist and be a number": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response ID should exist and be a number": true
+				}
+			]
+		},
+		{
+			"id": "8409ece1-6b44-4da7-adfe-93a532722885",
+			"name": "rejeitarRegistroComEmailDuplicado",
+			"url": "http://localhost:8080/usuarios",
+			"time": 11,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 400": false,
+				"Resposta deve alertar erro de e-mail duplicado": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Resposta deve alertar erro de e-mail duplicado": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status code is 400": false,
+					"Resposta deve alertar erro de e-mail duplicado": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 31,
+	"collection": {
+		"requests": [
+			{
+				"id": "e4d99a27-bcee-4b54-b891-d0ba4536763e",
+				"method": "POST"
+			},
+			{
+				"id": "8409ece1-6b44-4da7-adfe-93a532722885",
+				"method": "POST"
+			}
+		]
+	}
+}

@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "0e1be20d-613d-48d3-abaa-ccfec75c9bd2",
+		"name": "gropes-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registro",
+			"item": [
+				{
+					"name": "registrarComSucesso",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response ID should exist and be a number\", function () {",
+									"    var res = pm.response.json();",
+									"    pm.expect(res.id).to.exist;",
+									"    pm.expect(res.id).to.be.gte(0);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": {{$randomInt}},\n    \"basico\": {\n        \"nome\": \"{{$randomFullName}}\",\n        \"email\": \"{{$randomExampleEmail}}\",\n        \"nascimento\": \"1990-10-31T10:43:44.806Z\",\n        \"senha\": \"{{$randomPassword}}\",\n        \"endereco\": {\n            \"rua\": \"{{$randomStreetName}}\",\n            \"numero\": \"{{$randomInt}}\",\n            \"complemento\": \"Complem. Apto. {{$randomInt}}\",\n            \"cep\": \"53000000\"\n        }\n    },\n    \"profissionais\": [\n        {\n            \"empresa\": \"{{$randomCompanyName}}\",\n            \"dataIni\": \"2021-05-19T01:43:44.806Z\",\n            \"dataFim\": \"{{$isoTimestamp}}\",\n            \"trabalhoAtual\": false,\n            \"descricao\": \"{{$randomLoremSentence}}\",\n            \"dificuldade\": 4,\n            \"tecnologias\": [\n                {\n                    \"tecnologia\": \"JavaScript\",\n                    \"frequenciaDeUso\": 3,\n                    \"dataIni\": \"2016-08-31T10:43:44.806Z\",\n                    \"dataFim\": \"{{$isoTimestamp}}\",\n                    \"utilizaAtual\": {{$randomBoolean}}\n                }\n            ]\n        }\n    ],\n    \"pessoais\": [\n        {\n            \"tecnologia\": \"Java\",\n            \"aplicacaoPratica\": 4,\n            \"dataIni\": \"2016-08-31T10:43:44.806Z\",\n            \"dataFim\": \"{{$isoTimestamp}}\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{envUri}}/usuarios",
+							"host": [
+								"{{envUri}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rejeitarRegistroComEmailDuplicado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Resposta deve alertar erro de e-mail duplicado\", function () {",
+									"    var res = pm.response.json();",
+									"    pm.expect(res.message).to.exist;",
+									"    pm.expect(res.message).to.be.equal('E-mail ja cadastrado');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const email = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+									"",
+									"pm.variables.set('emailRegistrado', email);",
+									"",
+									"const body = {",
+									"    \"id\": pm.variables.replaceIn('{{$randomInt}}'),",
+									"    \"basico\": {",
+									"        \"nome\": pm.variables.replaceIn('{{$randomFullName}}'),",
+									"        \"email\": email,",
+									"        \"nascimento\": \"2016-08-31T10:43:44.806Z\",",
+									"        \"senha\": pm.variables.replaceIn('{{$randomPassword}}'),",
+									"        \"endereco\": {",
+									"            \"rua\": pm.variables.replaceIn('{{$randomStreetName}}'),",
+									"            \"numero\": pm.variables.replaceIn('{{$randomInt}}'),",
+									"            \"complemento\": `Complem. Apto. ${pm.variables.replaceIn('{{$randomInt}}')}`,",
+									"            \"cep\": \"53000000\"",
+									"        }",
+									"    },",
+									"    \"profissionais\": [",
+									"        {",
+									"            \"empresa\": pm.variables.replaceIn('{{$randomCompanyName}}'),",
+									"            \"dataIni\": \"2021-05-19T01:43:44.806Z\",",
+									"            \"dataFim\": pm.variables.replaceIn('{{$isoTimestamp}}'),",
+									"            \"trabalhoAtual\": false,",
+									"            \"descricao\": pm.variables.replaceIn('{{$randomLoremSentence}}'),",
+									"            \"dificuldade\": 4,",
+									"            \"tecnologias\": [",
+									"                {",
+									"                    \"tecnologia\": \"JavaScript\",",
+									"                    \"frequenciaDeUso\": 3,",
+									"                    \"dataIni\": \"2016-08-31T10:43:44.806Z\",",
+									"                    \"dataFim\": pm.variables.replaceIn('{{$isoTimestamp}}'),",
+									"                    \"utilizaAtual\": pm.variables.replaceIn('{{$randomBoolean}}')",
+									"                }",
+									"            ]",
+									"        }",
+									"    ],",
+									"    \"pessoais\": [",
+									"        {",
+									"            \"tecnologia\": \"Java\",",
+									"            \"aplicacaoPratica\": 4,",
+									"            \"dataIni\": \"2016-08-31T10:43:44.806Z\",",
+									"            \"dataFim\": pm.variables.replaceIn('{{$isoTimestamp}}')",
+									"        }",
+									"    ]",
+									"};",
+									"",
+									"pm.sendRequest({",
+									"    url: `${pm.variables.replaceIn('{{envUri}}')}/usuarios`,",
+									"    method: 'POST',",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(body)",
+									"    }",
+									"}, function(err, response) {",
+									"    if (err) throw err;",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": {{$randomInt}},\n    \"basico\": {\n        \"nome\": \"{{$randomFullName}}\",\n        \"email\": \"{{emailRegistrado}}\",\n        \"nascimento\": \"1990-10-31T10:43:44.806Z\",\n        \"senha\": \"{{$randomPassword}}\",\n        \"endereco\": {\n            \"rua\": \"{{$randomStreetName}}\",\n            \"numero\": \"{{$randomInt}}\",\n            \"complemento\": \"Complem. Apto. {{$randomInt}}\",\n            \"cep\": \"53000000\"\n        }\n    },\n    \"profissionais\": [\n        {\n            \"empresa\": \"{{$randomCompanyName}}\",\n            \"dataIni\": \"2021-05-19T01:43:44.806Z\",\n            \"dataFim\": \"{{$isoTimestamp}}\",\n            \"trabalhoAtual\": false,\n            \"descricao\": \"{{$randomLoremSentence}}\",\n            \"dificuldade\": 4,\n            \"tecnologias\": [\n                {\n                    \"tecnologia\": \"JavaScript\",\n                    \"frequenciaDeUso\": 3,\n                    \"dataIni\": \"2016-08-31T10:43:44.806Z\",\n                    \"dataFim\": \"{{$isoTimestamp}}\",\n                    \"utilizaAtual\": {{$randomBoolean}}\n                }\n            ]\n        }\n    ],\n    \"pessoais\": [\n        {\n            \"tecnologia\": \"Java\",\n            \"aplicacaoPratica\": 4,\n            \"dataIni\": \"2016-08-31T10:43:44.806Z\",\n            \"dataFim\": \"{{$isoTimestamp}}\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{envUri}}/usuarios",
+							"host": [
+								"{{envUri}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "envUri",
+			"value": "http://localhost:8080"
+		}
+	]
+}
