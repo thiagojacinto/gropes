@@ -12,6 +12,15 @@ public class EmpresaUsuarioDTO {
 	private List<TecnologiaDTO> tecnologias;
 	private String descricao;
 	private boolean trabalhoAtual;
+	private boolean autonomo;
+
+	public boolean isAutonomo() {
+		return autonomo;
+	}
+
+	public void setAutonomo(boolean autonomo) {
+		this.autonomo = autonomo;
+	}
 
 	public String getDescricao() {
 		return descricao;
@@ -73,6 +82,8 @@ public class EmpresaUsuarioDTO {
 	public String toString() {
 		return "EmpresaUsuarioDTO [empresa=" + empresa + ", dataIni=" + dataIni + ", dataFim=" + dataFim
 				+ ", dificuldade=" + dificuldade + ", tecnologias=" + tecnologias + ", descricao=" + descricao
-				+ ", trabalhoAtual=" + trabalhoAtual + "]";
+				+ ", trabalhoAtual=" + trabalhoAtual + ", autonomo=" + autonomo + "]";
 	}
+
+	
 }

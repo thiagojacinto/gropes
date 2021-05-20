@@ -8,7 +8,7 @@ public class TecnologiaUsuarioDTO {
 	private boolean utilizaAtual;
 	private Date dataIni;
 	private Date dataFim;
-	private boolean maisDe24Meses;
+	//private boolean maisDe24Meses;
 
 	public TecnologiaDTO getTecnologia() {
 		return tecnologia;
@@ -42,18 +42,18 @@ public class TecnologiaUsuarioDTO {
 		this.dataFim = dataFim;
 	}
 
-	public boolean isMaisDe24Meses() {
+	/*public boolean isMaisDe24Meses() {
 		return maisDe24Meses;
 	}
 
 	public void setMaisDe24Meses(boolean maisDe24Meses) {
 		this.maisDe24Meses = maisDe24Meses;
-	}
+	}*/
 
 	@Override
 	public String toString() {
 		return "TecnologiaUsuarioDTO [tecnologia=" + tecnologia + ", utilizaAtual=" + utilizaAtual + ", dataIni="
-				+ dataIni + ", dataFim=" + dataFim + ", maisDe24Meses=" + maisDe24Meses + "]";
+				+ dataIni + ", dataFim=" + dataFim  + "]";
 	}
 
 }

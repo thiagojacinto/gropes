@@ -31,6 +31,8 @@ public class EmpresaUsuario {
 	private Date dataFim;
 	private Integer diversidade;
 	private Integer complexidade;
+	private Boolean trabalhoAtual;
+	private String descricao;
 
 	public Long getId() {
 		return id;
@@ -87,12 +89,29 @@ public class EmpresaUsuario {
 	public void setComplexidade(Integer complexidade) {
 		this.complexidade = complexidade;
 	}
+	
+	public Boolean getTrabalhoAtual() {
+		return trabalhoAtual;
+	}
+
+	public void setTrabalhoAtual(Boolean trabalhoAtual) {
+		this.trabalhoAtual = trabalhoAtual;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 	@Override
 	public String toString() {
 		return "EmpresaUsuario [id=" + id + ", empresa=" + empresa + ", usuario=" + usuario + ", dataIni=" + dataIni
-				+ ", dataFim=" + dataFim + ", diversidade=" + diversidade + ", complexidade=" + complexidade + "]";
+				+ ", dataFim=" + dataFim + ", diversidade=" + diversidade + ", complexidade=" + complexidade
+				+ ", trabalhoAtual=" + trabalhoAtual + ", descricao=" + descricao + "]";
 	}
-
+	
 	
 }

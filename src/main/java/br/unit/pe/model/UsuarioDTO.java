@@ -1,9 +1,12 @@
 package br.unit.pe.model;
 
+import java.util.Date;
+
 public class UsuarioDTO {
 
 	private String nome;
 	private String email;
+	private Date nascimento;
 	private String senha;
 	private EnderecoDTO endereco;
 
@@ -38,9 +41,20 @@ public class UsuarioDTO {
 	public void setEndereco(EnderecoDTO endereco) {
 		this.endereco = endereco;
 	}
+	
+	
+	public Date getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
+	}
 
 	@Override
 	public String toString() {
-		return "UsuarioDTO [nome=" + nome + ", email=" + email + ", senha=" + senha + ", endereco=" + endereco + "]";
+		return "UsuarioDTO [nome=" + nome + ", email=" + email + ", nascimento=" + nascimento + ", senha=" + senha
+				+ ", endereco=" + endereco + "]";
 	}
+	
 }

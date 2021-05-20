@@ -29,8 +29,17 @@ public class TecnologiaUsuario {
 	private Date conheceDesde;
 	private Date estudaDesde;
 	private Date estudouAte;
+	//private Character maisDe24Meses;
 
 	
+
+	/*public Character getMaisDe24Meses() {
+		return maisDe24Meses;
+	}
+
+	public void setMaisDe24Meses(Character maisDe24Meses) {
+		this.maisDe24Meses = maisDe24Meses;
+	}*/
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -84,7 +93,7 @@ public class TecnologiaUsuario {
 	public String toString() {
 		return "TecnologiaUsuario [usuario=" + usuario + ", tecnologia=" + tecnologia + ", inovatividade="
 				+ inovatividade + ", conheceDesde=" + conheceDesde + ", estudaDesde=" + estudaDesde + ", estudouAte="
-				+ estudouAte + "]";
+				+ estudouAte + "] ";
+						//+ "maisDe24Meses=" + maisDe24Meses + "]";
 	}
-	
 }

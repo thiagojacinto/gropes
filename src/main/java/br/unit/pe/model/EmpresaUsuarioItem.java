@@ -31,6 +31,7 @@ public class EmpresaUsuarioItem {
 	private Double ca;
 	private Double det;
 	private Integer exp;
+	private Character utilizaAtual;
 
 	public EmpresaUsuario getEmpUsu() {
 		return empUsu;
@@ -94,6 +95,25 @@ public class EmpresaUsuarioItem {
 
 	public void setExp(Integer exp) {
 		this.exp = exp;
+	}
+
+	public Character getUtilizaAtual() {
+		return utilizaAtual;
+	}
+
+	public void setUtilizaAtual(Character utilizaAtual) {
+		this.utilizaAtual = utilizaAtual;
+	}
+
+	public void setEmpUsu(EmpresaUsuario empUsu) {
+		this.empUsu = empUsu;
+	}
+
+	@Override
+	public String toString() {
+		return "EmpresaUsuarioItem [empUsu=" + empUsu + ", tecnologia=" + tecnologia + ", dataIni=" + dataIni
+				+ ", dataFim=" + dataFim + ", frequencia=" + frequencia + ", ca=" + ca + ", det=" + det + ", exp=" + exp
+				+ ", utilizaAtual=" + utilizaAtual + "]";
 	}
 
 	

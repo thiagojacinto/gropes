@@ -97,6 +97,7 @@ public class UsuarioController {
 		u.setCep(userRequest.getEndereco().getCep());
 		u.setComplemento(userRequest.getEndereco().getComplemento());
 		u.setNumero(userRequest.getEndereco().getNumero());
+		u.setNascimento(userRequest.getNascimento());
 		
 		Usuario usuarioBd = registroService.salvar(u);
 		System.out.println("Usuário salvo no bd: "+ usuarioBd);
@@ -116,18 +117,18 @@ public class UsuarioController {
 				Empresa empresaBd = registroService.salvar(e);
 				System.out.println("Empresa salva no bd: "+ empresaBd);
 			}
-			//TODO e.setAutonomo(null);
+			e.setAutonomo(euRequest.isAutonomo()? 'S': 'N');
 			//System.out.println(e);
 			
-			int dificuldade = 0;
-			int totalTecnologias = 0;
+			//int dificuldade = 0;
+			//int totalTecnologias = 0;
 			
 			List<TecnologiaDTO> tecnologias = euRequest.getTecnologias();
 			
 			if(!tecnologias.isEmpty()) {
-				totalTecnologias = tecnologias.size();
+				//totalTecnologias = tecnologias.size();
 				for (TecnologiaDTO tecDTO : tecnologias) {
-					dificuldade += tecDTO.getDificuldade();
+					//dificuldade += tecDTO.getDificuldade();
 					
 					String descricaoTecnologia = tecDTO.getTecnologia();
 					Tecnologia t = registroService.findTecnologiaByDescricao(descricaoTecnologia);
@@ -139,20 +140,21 @@ public class UsuarioController {
 					}
 				}
 			}
-			if (dificuldade > 0) {
+			/*if (dificuldade > 0) {
 				dificuldade /= totalTecnologias;
-			}
+			}*/
 			
 			EmpresaUsuario eu = new EmpresaUsuario();
 			eu.setDataFim(euRequest.getDataFim());
 			eu.setDataIni(euRequest.getDataIni());
 			eu.setUsuario(usuarioBd);
-			//TODO eu.setTrabalhoAtual(null);
+			eu.setTrabalhoAtual(euRequest.isTrabalhoAtual());
 			eu.setEmpresa(e);
-			//TODO eu.setComplexidade(euRequest.getDificuldade());
-			eu.setComplexidade(dificuldade);
+			eu.setComplexidade(euRequest.getDificuldade());
+			//eu.setComplexidade(dificuldade);
+			
 			//TODO eu.setDiversidade(null);
-			//TODO eu.setDescricao(null);
+			eu.setDescricao(euRequest.getDescricao());
 			//System.out.println(eu);
 			EmpresaUsuario empresaUsuarioBd = registroService.salvar(eu);
 			System.out.println("Empresa Usuário salva no bd: "+ empresaUsuarioBd);
@@ -170,8 +172,8 @@ public class UsuarioController {
 					Tecnologia t = registroService.findTecnologiaByDescricao(descricaoTecnologia);
 					
 					eui.setTecnologia(t);
-					//TODO eui.setFrequencia(null);
-					//TODO eui.setUtilizaAtual(null);
+					eui.setFrequencia(tecDTO.getFrequenciaDeUso());
+					eui.setUtilizaAtual(tecDTO.getUtilizaAtual()?'S':'N');
 
 					EmpresaUsuarioItem empresaUsuarioItemBd = registroService.salvar(eui);
 					System.out.println("Empresa Usuário Item salvo no bd: "+ empresaUsuarioItemBd);
@@ -191,17 +193,15 @@ public class UsuarioController {
 				System.out.println("Tecnologia no bd:" +tecnologiaBd);
 			}
 			TecnologiaUsuarioDTO tu = modelMapper.map(object, TecnologiaUsuarioDTO.class);
-			//tu.setTecnologia(t);
-			//System.out.println(tu);
-			
+
 			TecnologiaUsuario tecnologiaUsuario = new TecnologiaUsuario();
-			//TODO tecnologiaUsuario.setConheceDesde(null);
+			tecnologiaUsuario.setConheceDesde(tu.getDataIni());
 			tecnologiaUsuario.setTecnologia(tec);
 			tecnologiaUsuario.setEstudaDesde(tu.getDataIni());
 			tecnologiaUsuario.setEstudouAte(tu.getDataFim());
 			tecnologiaUsuario.setUsuario(usuarioBd);
-			//TODO tecnologiaUsuario.setMaisde24Meses(null);
-			
+			//tecnologiaUsuario.setMaisde24Meses(tu.isMaisDe24Meses()?'S':'N');
+			//TODO tecnologiaUsuario.setAplicacaoPratica(tu.getAplicacaoPratica());
 			TecnologiaUsuario tecnologiaUsuarioBd = registroService.salvar(tecnologiaUsuario);
 			System.out.println(tecnologiaUsuarioBd);
 		}
