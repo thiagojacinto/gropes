@@ -1,11 +1,15 @@
 package br.unit.pe.model;
 
+import java.util.Date;
+
 public class TecnologiaDTO {
 
 	private String tecnologia;
 	//private Integer dificuldade;
 	private Integer frequenciaDeUso;
 	private Boolean utilizaAtual;
+	private Date dataIni;
+	private Date dataFim;
 	
 	
 	public Boolean getUtilizaAtual() {
@@ -44,7 +48,25 @@ public class TecnologiaDTO {
 		this.frequenciaDeUso = frequenciaDeUso;
 	}
 
-	
+
+	public Date getDataIni() {
+		return dataIni;
+	}
+
+
+	public void setDataIni(Date dataIni) {
+		this.dataIni = dataIni;
+	}
+
+
+	public Date getDataFim() {
+		return dataFim;
+	}
+
+
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
 	
 	/*public Integer getDificuldade() {
 		return dificuldade;

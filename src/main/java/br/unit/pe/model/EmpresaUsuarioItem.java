@@ -37,7 +37,7 @@ public class EmpresaUsuarioItem {
 		return empUsu;
 	}
 
-	public void setEmpUsuId(EmpresaUsuario empUsu) {
+	public void setEmpUsu(EmpresaUsuario empUsu) {
 		this.empUsu = empUsu;
 	}
 
@@ -105,9 +105,6 @@ public class EmpresaUsuarioItem {
 		this.utilizaAtual = utilizaAtual;
 	}
 
-	public void setEmpUsu(EmpresaUsuario empUsu) {
-		this.empUsu = empUsu;
-	}
 
 	@Override
 	public String toString() {

@@ -9,6 +9,15 @@ public class TecnologiaUsuarioDTO {
 	private Date dataIni;
 	private Date dataFim;
 	//private boolean maisDe24Meses;
+	private Integer aplicacaoPratica;
+
+	public Integer getAplicacaoPratica() {
+		return aplicacaoPratica;
+	}
+
+	public void setAplicacaoPratica(Integer aplicacaoPratica) {
+		this.aplicacaoPratica = aplicacaoPratica;
+	}
 
 	public TecnologiaDTO getTecnologia() {
 		return tecnologia;

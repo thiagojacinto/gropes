@@ -29,6 +29,9 @@ public class TecnologiaUsuario {
 	private Date conheceDesde;
 	private Date estudaDesde;
 	private Date estudouAte;
+	private Integer aplicacaoPratica;
+	
+	
 	//private Character maisDe24Meses;
 
 	
@@ -40,6 +43,14 @@ public class TecnologiaUsuario {
 	public void setMaisDe24Meses(Character maisDe24Meses) {
 		this.maisDe24Meses = maisDe24Meses;
 	}*/
+
+	public Integer getAplicacaoPratica() {
+		return aplicacaoPratica;
+	}
+
+	public void setAplicacaoPratica(Integer aplicacaoPratica) {
+		this.aplicacaoPratica = aplicacaoPratica;
+	}
 
 	public Usuario getUsuario() {
 		return usuario;
