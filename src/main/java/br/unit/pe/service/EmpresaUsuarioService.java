@@ -21,4 +21,8 @@ public class EmpresaUsuarioService {
 	public EmpresaUsuario salvar(EmpresaUsuario empresaUsuario) {
 		return repository.save(empresaUsuario);
 	}
+
+	public List<EmpresaUsuario> listByIdUsuario(Long idUsuario) {
+		return repository.listByIdUsuario(idUsuario);
+	}
 }

@@ -28,6 +28,7 @@ import br.unit.pe.model.Empresa;
 import br.unit.pe.model.EmpresaUsuario;
 import br.unit.pe.model.EmpresaUsuarioDTO;
 import br.unit.pe.model.EmpresaUsuarioItem;
+import br.unit.pe.model.InfoRegistro;
 import br.unit.pe.model.Tecnologia;
 import br.unit.pe.model.TecnologiaDTO;
 import br.unit.pe.model.TecnologiaUsuario;
@@ -53,12 +54,12 @@ public class UsuarioController {
 		return service.listar();
 	}
 
-	@GetMapping("/usuarios/findByNome/{nome}")
+	//@GetMapping("/usuarios/findByNome/{nome}")
 	Usuario procurar(@PathVariable("nome") String userName) {
 		return service.findByNome(userName).orElseThrow(() -> new UserNotFoundException(userName));
 	}
 
-	@GetMapping("/usuarios/findById/{id}")
+	//@GetMapping("/usuarios/findById/{id}")
 	Usuario procurar(@PathVariable("id") Long id) {
 		return service.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 	}
@@ -251,5 +252,18 @@ public class UsuarioController {
 			JsonNode response = mapper.convertValue(e, JsonNode.class);
 			return ResponseEntity.badRequest().body(response);
 		}
+	}
+	
+	@GetMapping("/usuarios/{id}")
+	ResponseEntity<?> getInfoRegistro(@PathVariable("id") Long userId) {
+		List<TecnologiaUsuario> tecnologiasUsuario = registroService.listTecUsuByIdUsuario(userId);
+		//List<EmpresaUsuario> empresasUsuario = registroService.listEmpUsuByIdUsuario(userId);
+		List<EmpresaUsuarioItem> empresaUsuarioItens = registroService.listEmpUsuItemByIdUsuario(userId);
+		
+		InfoRegistro infoRegistro = new InfoRegistro();
+		infoRegistro.setEmpresaUsuarioItens(empresaUsuarioItens);
+		infoRegistro.setTecnologiasUsuario(tecnologiasUsuario);
+		
+		return ResponseEntity.ok().body(infoRegistro);
 	}
 }

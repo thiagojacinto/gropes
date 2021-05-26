@@ -1,5 +1,7 @@
 package br.unit.pe.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +51,14 @@ public class RegistroService {
 	}
 	public TecnologiaUsuario salvar(TecnologiaUsuario tecnologiaUsuario) {
 		return tecnologiaUsuarioService.salvar(tecnologiaUsuario);
+	}
+	public List<TecnologiaUsuario> listTecUsuByIdUsuario(Long idUsuario) {
+		return tecnologiaUsuarioService.listByIdUsuario(idUsuario);
+	}
+	public List<EmpresaUsuario> listEmpUsuByIdUsuario(Long idUsuario) {
+		return empresaUsuarioService.listByIdUsuario(idUsuario);
+	}
+	public List<EmpresaUsuarioItem> listEmpUsuItemByIdUsuario(Long userId) {
+		return empresaUsuarioItemService.listByIdUsuario(userId);
 	}
 }

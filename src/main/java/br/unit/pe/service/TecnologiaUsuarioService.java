@@ -27,6 +27,10 @@ public class TecnologiaUsuarioService {
 	public TecnologiaUsuario salvar(TecnologiaUsuario tecnologiaUsuario) {
 		return tecUsuRepository.save(tecnologiaUsuario);
 	}
+
+	public List<TecnologiaUsuario> listByIdUsuario(Long idUsuario) {
+		return tecUsuRepository.listByIdUsuario(idUsuario);
+	}
 	
 	
 }
