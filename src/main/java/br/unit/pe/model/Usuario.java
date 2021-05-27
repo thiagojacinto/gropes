@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -20,6 +21,7 @@ public class Usuario {
 	@NotBlank
 	@Size(max=100,min=2)
 	private String nome;
+	@NotNull
 	private Date nascimento;
 	private Double score;
 	//atributos extras

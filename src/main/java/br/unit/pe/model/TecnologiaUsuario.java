@@ -28,11 +28,11 @@ public class TecnologiaUsuario {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Tecnologia tecnologia;
 	private Double inovatividade;
-	@NotBlank
+	@NotNull
 	private Date conheceDesde;
-	@NotBlank
+	@NotNull
 	private Date estudaDesde;
-	@NotBlank
+	@NotNull
 	private Date estudouAte;
 	@NotNull
 	private Integer aplicacaoPratica;

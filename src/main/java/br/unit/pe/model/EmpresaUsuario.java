@@ -29,9 +29,9 @@ public class EmpresaUsuario {
 	@JoinColumn(name = "id_usuario")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Usuario usuario;
-	@NotBlank
+	@NotNull
 	private Date dataIni;
-	@NotBlank
+	@NotNull
 	private Date dataFim;
 	@NotNull
 	private Integer diversidade;
