@@ -34,7 +34,7 @@ public class TecnologiaUsuario {
 	private Date estudaDesde;
 	@NotBlank
 	private Date estudouAte;
-	@NotBlank
+	@NotNull
 	private Integer aplicacaoPratica;
 	
 	

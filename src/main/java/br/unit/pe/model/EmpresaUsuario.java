@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -32,9 +33,9 @@ public class EmpresaUsuario {
 	private Date dataIni;
 	@NotBlank
 	private Date dataFim;
-	@NotBlank
+	@NotNull
 	private Integer diversidade;
-	@NotBlank
+	@NotNull
 	private Integer complexidade;
 	private Boolean trabalhoAtual;
 	private String descricao;
