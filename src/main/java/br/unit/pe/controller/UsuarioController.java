@@ -249,6 +249,7 @@ public class UsuarioController {
 			
 			return ResponseEntity.created(null).body(response);
 		}catch(Exception e) {
+			System.err.println(e.getMessage());
 			JsonNode response = mapper.convertValue(e, JsonNode.class);
 			return ResponseEntity.badRequest().body(response);
 		}
