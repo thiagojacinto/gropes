@@ -94,8 +94,8 @@ public class UsuarioController {
 	}
 
 	@PostMapping(value = "/usuarios", consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	@Transactional
-	ResponseEntity<?> registrar(@RequestBody Map<String, Object> payload) {
+	@Transactional(rollbackFor = Exception.class)
+	ResponseEntity<?> registrar(@RequestBody Map<String, Object> payload) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			UsuarioDTO userRequest = modelMapper.map(payload.get("basico"), UsuarioDTO.class);
