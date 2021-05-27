@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -16,18 +17,25 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
-	@Size(max=100)
+	@NotBlank
+	@Size(max=100,min=2)
 	private String nome;
 	private Date nascimento;
 	private Double score;
 	//atributos extras
 	@Column(unique=true)
+	@NotBlank
+	@Email
 	private String email;
+	@NotBlank
+	@Size(min=8)
 	private String senha;
+	@NotBlank
 	private String rua;
+	@NotBlank
 	private String numero;
 	private String complemento;
+	@Size(max=8,min=8)
 	private String cep;
 	
 	public Long getId() {

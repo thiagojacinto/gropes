@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -27,9 +28,13 @@ public class EmpresaUsuario {
 	@JoinColumn(name = "id_usuario")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Usuario usuario;
+	@NotBlank
 	private Date dataIni;
+	@NotBlank
 	private Date dataFim;
+	@NotBlank
 	private Integer diversidade;
+	@NotBlank
 	private Integer complexidade;
 	private Boolean trabalhoAtual;
 	private String descricao;

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -26,9 +28,13 @@ public class TecnologiaUsuario {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Tecnologia tecnologia;
 	private Double inovatividade;
+	@NotBlank
 	private Date conheceDesde;
+	@NotBlank
 	private Date estudaDesde;
+	@NotBlank
 	private Date estudouAte;
+	@NotBlank
 	private Integer aplicacaoPratica;
 	
 	

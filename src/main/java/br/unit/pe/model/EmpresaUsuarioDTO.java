@@ -13,7 +13,8 @@ public class EmpresaUsuarioDTO {
 	private String descricao;
 	private boolean trabalhoAtual;
 	private boolean autonomo;
-
+	private Integer diversidade;
+	
 	public boolean isAutonomo() {
 		return autonomo;
 	}
@@ -78,12 +79,18 @@ public class EmpresaUsuarioDTO {
 		this.trabalhoAtual = trabalhoAtual;
 	}
 
+	public Integer getDiversidade() {
+		return diversidade;
+	}
+
+	public void setDiversidade(Integer diversidade) {
+		this.diversidade = diversidade;
+	}
+
 	@Override
 	public String toString() {
 		return "EmpresaUsuarioDTO [empresa=" + empresa + ", dataIni=" + dataIni + ", dataFim=" + dataFim
 				+ ", dificuldade=" + dificuldade + ", tecnologias=" + tecnologias + ", descricao=" + descricao
-				+ ", trabalhoAtual=" + trabalhoAtual + ", autonomo=" + autonomo + "]";
+				+ ", trabalhoAtual=" + trabalhoAtual + ", autonomo=" + autonomo + ", diversidade=" + diversidade + "]";
 	}
-
-	
 }

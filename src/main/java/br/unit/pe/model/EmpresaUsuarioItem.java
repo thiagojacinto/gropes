@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -27,6 +28,7 @@ public class EmpresaUsuarioItem {
 	private Tecnologia tecnologia;
 	private Date dataIni;
 	private Date dataFim;
+	@NotBlank
 	private Integer frequencia;
 	private Double ca;
 	private Double det;

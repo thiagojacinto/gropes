@@ -171,7 +171,7 @@ public class UsuarioController {
 				eu.setComplexidade(euRequest.getDificuldade());
 				//eu.setComplexidade(dificuldade);
 				
-				//TODO eu.setDiversidade(null);
+				eu.setDiversidade(euRequest.getDiversidade());
 				eu.setDescricao(euRequest.getDescricao());
 				//System.out.println(eu);
 				EmpresaUsuario empresaUsuarioBd = registroService.salvar(eu);
