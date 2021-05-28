@@ -2,6 +2,7 @@ package br.unit.pe.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -108,16 +109,20 @@ public class UsuarioController {
 			u.setNumero(userRequest.getEndereco().getNumero());
 			u.setNascimento(userRequest.getNascimento());
 			
-			Usuario usuarioBd = registroService.salvar(u);
-			System.out.println("Usuário salvo no bd: "+ usuarioBd);
+			Map<String,Object> objetos = new HashMap<String,Object>();
+			objetos.put("usuario",u);
+			
+			//Usuario usuarioBd = registroService.salvar(u);
+			//System.out.println("Usuário salvo no bd: "+ usuarioBd);
 			
 			ArrayList<Object> a = (ArrayList) payload.get("profissionais");
 			List<Empresa> empresasList = new ArrayList<Empresa>();
+			List<Empresa> empresasList2 = new ArrayList<Empresa>();
 			List<TecnologiaDTO> tecnologiasList = new ArrayList<TecnologiaDTO>();
-			List<EmpresaUsuario> empresaUsuarioListBd = new ArrayList<EmpresaUsuario>();
-			EmpresaUsuarioItem empresaUsuarioItemBd = null;
-			List<TecnologiaUsuario> tecnologiasUsuario = new ArrayList<TecnologiaUsuario>(); 
-			List<EmpresaUsuarioItem> empresaUsuarioItensBd = new ArrayList<EmpresaUsuarioItem>();
+			List<Tecnologia> tecnologiasList2 = new ArrayList<Tecnologia>();
+			List<EmpresaUsuario> empresaUsuarioList = new ArrayList<EmpresaUsuario>();
+			List<EmpresaUsuarioItem> empresaUsuarioItensList = new ArrayList<EmpresaUsuarioItem>();
+			List<TecnologiaUsuario> tecnologiasUsuario = new ArrayList<TecnologiaUsuario>();
 			
 			for (Object object : a) {
 				EmpresaUsuarioDTO euRequest = modelMapper.map(object, EmpresaUsuarioDTO.class);
@@ -130,9 +135,10 @@ public class UsuarioController {
 					e = new Empresa();
 					e.setDescricao(descricaoEmpresa);
 					e.setAutonomo(euRequest.isAutonomo()? 'S': 'N');
-					Empresa empresaBd = registroService.salvar(e);
-					e = empresaBd;
-					System.out.println("Empresa salva no bd: "+ e);
+					empresasList2.add(e);
+					//Empresa empresaBd = registroService.salvar(e);
+					//e = empresaBd;
+					//System.out.println("Empresa salva no bd: "+ e);
 				}
 				empresasList.add(e);
 				//System.out.println(e);
@@ -153,8 +159,9 @@ public class UsuarioController {
 						if(t == null){
 							t = new Tecnologia();
 							t.setDescricao(tecDTO.getTecnologia());
-							Tecnologia tecnologiaBd = registroService.salvar(t);
-							System.out.println("Tecnologia no bd:" +tecnologiaBd);
+							tecnologiasList2.add(t);
+							//Tecnologia tecnologiaBd = registroService.salvar(t);
+							//System.out.println("Tecnologia no bd:" +tecnologiaBd);
 						}
 					}
 				}
@@ -165,7 +172,8 @@ public class UsuarioController {
 				EmpresaUsuario eu = new EmpresaUsuario();
 				eu.setDataFim(euRequest.getDataFim());
 				eu.setDataIni(euRequest.getDataIni());
-				eu.setUsuario(usuarioBd);
+				eu.setUsuario(u);
+				//eu.setUsuario(usuarioBd);
 				eu.setTrabalhoAtual(euRequest.isTrabalhoAtual());
 				eu.setEmpresa(e);
 				eu.setComplexidade(euRequest.getDificuldade());
@@ -174,9 +182,10 @@ public class UsuarioController {
 				eu.setDiversidade(euRequest.getDiversidade());
 				eu.setDescricao(euRequest.getDescricao());
 				//System.out.println(eu);
-				EmpresaUsuario empresaUsuarioBd = registroService.salvar(eu);
-				empresaUsuarioListBd.add(empresaUsuarioBd);
-				System.out.println("Empresa Usuário salva no bd: "+ empresaUsuarioBd);
+				//EmpresaUsuario empresaUsuarioBd = registroService.salvar(eu);
+				//empresaUsuarioList.add(empresaUsuarioBd);
+				//System.out.println("Empresa Usuário salva no bd: "+ empresaUsuarioBd);
+				empresaUsuarioList.add(eu);
 				
 				if(!tecnologias.isEmpty()) {
 					for (TecnologiaDTO tecDTO : tecnologias) {
@@ -185,7 +194,8 @@ public class UsuarioController {
 						EmpresaUsuarioItem eui = new EmpresaUsuarioItem();
 						eui.setDataFim(tecDTO.getDataFim());
 						eui.setDataIni(tecDTO.getDataIni());
-						eui.setEmpUsu(empresaUsuarioBd);
+						//eui.setEmpUsu(empresaUsuarioBd);
+						eui.setEmpUsu(eu);
 						
 						String descricaoTecnologia = tecDTO.getTecnologia();
 						Tecnologia t = registroService.findTecnologiaByDescricao(descricaoTecnologia);
@@ -194,12 +204,18 @@ public class UsuarioController {
 						eui.setFrequencia(tecDTO.getFrequenciaDeUso());
 						eui.setUtilizaAtual(tecDTO.getUtilizaAtual()?'S':'N');
 	
-						empresaUsuarioItemBd = registroService.salvar(eui);
-						empresaUsuarioItensBd.add(empresaUsuarioItemBd);
-						System.out.println("Empresa Usuário Item salvo no bd: "+ empresaUsuarioItemBd);
+						//empresaUsuarioItemBd = registroService.salvar(eui);
+						//empresaUsuarioItensBd.add(empresaUsuarioItemBd);
+						//System.out.println("Empresa Usuário Item salvo no bd: "+ empresaUsuarioItemBd);
+						empresaUsuarioItensList.add(eui);
 					}
 				}	
 			}
+			objetos.put("empresas",empresasList2);
+			objetos.put("empresas usuario", empresaUsuarioList);
+			objetos.put("empresa usuario itens",empresaUsuarioItensList);
+			objetos.put("tecnologias", tecnologiasList2);
+			
 			ArrayList b = (ArrayList) payload.get("pessoais");
 			for (Object object : b) {
 				TecnologiaDTO t = modelMapper.map(object, TecnologiaDTO.class);
@@ -209,8 +225,8 @@ public class UsuarioController {
 				if(tec == null){
 					tec = new Tecnologia();
 					tec.setDescricao(t.getTecnologia());
-					Tecnologia tecnologiaBd = registroService.salvar(tec);
-					System.out.println("Tecnologia no bd:" +tecnologiaBd);
+					//Tecnologia tecnologiaBd = registroService.salvar(tec);
+					//System.out.println("Tecnologia no bd:" +tecnologiaBd);
 				}
 				TecnologiaUsuarioDTO tu = modelMapper.map(object, TecnologiaUsuarioDTO.class);
 	
@@ -219,21 +235,33 @@ public class UsuarioController {
 				tecnologiaUsuario.setTecnologia(tec);
 				tecnologiaUsuario.setEstudaDesde(tu.getDataIni());
 				tecnologiaUsuario.setEstudouAte(tu.getDataFim());
-				tecnologiaUsuario.setUsuario(usuarioBd);
+				//tecnologiaUsuario.setUsuario(usuarioBd);
+				tecnologiaUsuario.setUsuario(u);
 				//tecnologiaUsuario.setMaisde24Meses(tu.isMaisDe24Meses()?'S':'N');
 				tecnologiaUsuario.setAplicacaoPratica(tu.getAplicacaoPratica());
-				TecnologiaUsuario tecnologiaUsuarioBd = registroService.salvar(tecnologiaUsuario);
-				tecnologiasUsuario.add(tecnologiaUsuarioBd);
-				System.out.println(tecnologiasUsuario);
+				//TecnologiaUsuario tecnologiaUsuarioBd = registroService.salvar(tecnologiaUsuario);
+				//tecnologiasUsuario.add(tecnologiaUsuarioBd);
+				//System.out.println(tecnologiasUsuario);
+				tecnologiasUsuario.add(tecnologiaUsuario);
 			}
+			objetos.put("tecnologias usuario", tecnologiasUsuario);
+			
+			
+			Map<String,Object> objetos2 = registroService.salvarRegistro(objetos);
+			
+			Usuario uBd = (Usuario) objetos2.getOrDefault("usuario", null);
+			List<EmpresaUsuario> empresaUsuarioListBd = (ArrayList<EmpresaUsuario>) objetos2.getOrDefault("empresa usuario", null);
+			List<EmpresaUsuarioItem> empresaUsuarioItensBd = (ArrayList<EmpresaUsuarioItem>) objetos2.getOrDefault("empresa usuario itens", null);
+			List<TecnologiaUsuario> tecnologiasUsuarioBd = (ArrayList<TecnologiaUsuario>) objetos2.getOrDefault("tecnologias usuario", null);
 			
 			//criando resposta
-			JsonNode userNode = mapper.convertValue(usuarioBd, JsonNode.class);		
+			//JsonNode userNode = mapper.convertValue(usuarioBd, JsonNode.class);
+			JsonNode userNode = mapper.convertValue(uBd, JsonNode.class);		
 			JsonNode empresaNode = mapper.convertValue(empresasList, JsonNode.class);
 			JsonNode tecnologiasNode  = mapper.convertValue(tecnologiasList, JsonNode.class);
 			JsonNode empresaUsuarioNode = mapper.convertValue(empresaUsuarioListBd, JsonNode.class);
 			JsonNode empresaUsuarioItensNode = mapper.convertValue(empresaUsuarioItensBd, JsonNode.class);
-			JsonNode tecnologiasUsuarioNode = mapper.convertValue(tecnologiasUsuario, JsonNode.class);
+			JsonNode tecnologiasUsuarioNode = mapper.convertValue(tecnologiasUsuarioBd, JsonNode.class);
 			
 			ObjectNode registro = mapper.createObjectNode();
 			
@@ -243,6 +271,7 @@ public class UsuarioController {
 			registro.set("Empresa Usuário", empresaUsuarioNode);
 			registro.set("Empresa Usuário Item", empresaUsuarioItensNode);
 			registro.set("Tecnologia Usuário", tecnologiasUsuarioNode);
+			
 			
 			ObjectNode response = mapper.createObjectNode();
 			response.set("Registro", registro);
