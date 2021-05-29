@@ -78,7 +78,11 @@ public class GropesApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 				.allowedOrigins("http://localhost:4200")
-				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");;
+				.allowedMethods("GET", "POST", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+				
+				registry.addMapping("/**")
+				.allowedOrigins("https://thiagojacinto.github.io")
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 			}
 		};
 	}
