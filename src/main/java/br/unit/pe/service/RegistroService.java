@@ -101,6 +101,7 @@ public class RegistroService {
 		List<EmpresaUsuarioItem> euiList2 = new ArrayList<>();
 		if(euiList!=null) {
 			for (EmpresaUsuarioItem empresaUsuarioItem : euiList) {
+				System.out.println("DEBUG:" + empresaUsuarioItem);
 				euiList2.add(salvar(empresaUsuarioItem));
 			}
 		}

@@ -1,5 +1,6 @@
 package br.unit.pe.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class Empresa {
 	private Long id;
 	@Size(min=3)
 	@NotBlank
+	@Column(unique=true)
 	private String descricao;
 	private Character autonomo;
 

@@ -1,5 +1,6 @@
 package br.unit.pe.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Tecnologia {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
+	@Column(unique=true)
 	private String descricao;
 	private Double relevancia;
 
