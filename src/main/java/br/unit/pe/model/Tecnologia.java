@@ -13,7 +13,7 @@ public class Tecnologia {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	//@NotBlank
+	@NotBlank
 	@Column(unique=true)
 	private String descricao;
 	private Double relevancia;

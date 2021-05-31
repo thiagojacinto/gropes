@@ -103,7 +103,7 @@ public class RegistroService {
 		if(euiList!=null) {
 			for (EmpresaUsuarioItem empresaUsuarioItem : euiList) {
 				System.out.println("Log EUI:"+empresaUsuarioItem.getTecnologia().getId());
-				if(empresaUsuarioItem.getTecnologia().getId()==null)
+				if(empresaUsuarioItem.getTecnologia().getId()==null) {
 					descricaoTecnologia =empresaUsuarioItem.getTecnologia().getDescricao();
 					System.out.println("Log EUI:" +descricaoTecnologia);
 					System.out.println("Log EUI:" +t);
@@ -113,6 +113,7 @@ public class RegistroService {
 							empresaUsuarioItem.setTecnologia(tecnologia);
 						}
 					}
+				}
 				euiList2.add(salvar(empresaUsuarioItem));
 			}
 		}
