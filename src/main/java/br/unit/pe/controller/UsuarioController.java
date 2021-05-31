@@ -203,7 +203,6 @@ public class UsuarioController {
 						//Tecnologia t = registroService.findTecnologiaByDescricao(descricaoTecnologia);
 						Tecnologia t = new Tecnologia();
 						t.setDescricao(tecDTO.getTecnologia());
-						System.out.println("loga:"+t.getDescricao());
 						eui.setTecnologia(t);
 						eui.setFrequencia(tecDTO.getFrequenciaDeUso());
 						eui.setUtilizaAtual(tecDTO.getUtilizaAtual()?'S':'N');
