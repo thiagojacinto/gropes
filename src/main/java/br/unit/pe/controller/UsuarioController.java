@@ -231,6 +231,7 @@ public class UsuarioController {
 				if(tec == null){
 					tec = new Tecnologia();
 					tec.setDescricao(t.getTecnologia());
+					tecnologiasList2.add(tec);
 					//Tecnologia tecnologiaBd = registroService.salvar(tec);
 					//System.out.println("Tecnologia no bd:" +tecnologiaBd);
 				}
