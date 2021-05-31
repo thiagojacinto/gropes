@@ -121,6 +121,15 @@ public class RegistroService {
 		List<TecnologiaUsuario> tuList2 = new ArrayList<>();
 		if(tuList!=null) {
 			for (TecnologiaUsuario tecnologiaUsuario : tuList) {
+				if(tecnologiaUsuario.getTecnologia().getId()==null) {
+					descricaoTecnologia =tecnologiaUsuario.getTecnologia().getDescricao();
+					for (Tecnologia tecnologia : t) {
+						if(tecnologia.getDescricao().equals(descricaoTecnologia)) {
+							System.out.println("Id Tecnologia salvo no bd : " +tecnologia.getId());
+							tecnologiaUsuario.setTecnologia(tecnologia);
+						}
+					}
+				}
 				tuList2.add(salvar(tecnologiaUsuario));
 			}
 		}
