@@ -99,14 +99,16 @@ public class RegistroService {
 		}
 		List<EmpresaUsuarioItem> euiList = (ArrayList<EmpresaUsuarioItem>) objetos.getOrDefault("empresa usuario itens",null);
 		List<EmpresaUsuarioItem> euiList2 = new ArrayList<>();
-		String descricaoEui = null;
+		String descricaoTecnologia = null;
 		if(euiList!=null) {
 			for (EmpresaUsuarioItem empresaUsuarioItem : euiList) {
 				System.out.println("Log EUI:"+empresaUsuarioItem.getTecnologia().getId());
 				if(empresaUsuarioItem.getTecnologia().getId()==null)
-					descricaoEui =empresaUsuarioItem.getTecnologia().getDescricao();
+					descricaoTecnologia =empresaUsuarioItem.getTecnologia().getDescricao();
+					System.out.println("Log EUI:" +descricaoTecnologia);
+					System.out.println("Log EUI:" +t);
 					for (Tecnologia tecnologia : t) {
-						if(tecnologia.getDescricao().equals(descricaoEui)) {
+						if(tecnologia.getDescricao().equals(descricaoTecnologia)) {
 							System.out.println("Id Tecnologia salvo no bd : " +tecnologia.getId());
 							empresaUsuarioItem.setTecnologia(tecnologia);
 						}
