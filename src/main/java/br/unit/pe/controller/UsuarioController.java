@@ -180,7 +180,7 @@ public class UsuarioController {
 				//eu.setComplexidade(dificuldade);
 				
 				eu.setDiversidade(euRequest.getDiversidade());
-				eu.setDescricao(euRequest.getDescricao());
+				if(euRequest.getDescricao()!=null)eu.setDescricao(euRequest.getDescricao());
 				//System.out.println(eu);
 				//EmpresaUsuario empresaUsuarioBd = registroService.salvar(eu);
 				//empresaUsuarioList.add(empresaUsuarioBd);
@@ -192,8 +192,8 @@ public class UsuarioController {
 						//EmpresaUsuarioItemDTO euiRequest = modelMapper.map(object, EmpresaUsuarioItemDTO.class);
 						//System.out.println(euiRequest);
 						EmpresaUsuarioItem eui = new EmpresaUsuarioItem();
-						eui.setDataFim(tecDTO.getDataFim());
-						eui.setDataIni(tecDTO.getDataIni());
+						if(tecDTO.getDataFim()!=null)eui.setDataFim(tecDTO.getDataFim());
+						if(tecDTO.getDataIni()!=null)eui.setDataIni(tecDTO.getDataIni());
 						//eui.setEmpUsu(empresaUsuarioBd);
 						eui.setEmpUsu(eu);
 						
