@@ -106,6 +106,7 @@ public class RegistroService {
 					descricaoEui =empresaUsuarioItem.getTecnologia().getDescricao();
 					for (Tecnologia tecnologia : t) {
 						if(tecnologia.getDescricao().equals(descricaoEui)) {
+							System.out.println("Id Tecnologia salvo no bd : " +tecnologia.getId());
 							empresaUsuarioItem.setTecnologia(tecnologia);
 						}
 					}
