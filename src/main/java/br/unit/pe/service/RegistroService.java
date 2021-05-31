@@ -102,7 +102,7 @@ public class RegistroService {
 		String descricaoEui = null;
 		if(euiList!=null) {
 			for (EmpresaUsuarioItem empresaUsuarioItem : euiList) {
-				System.out.println("Log EUI");
+				System.out.println("Log EUI:"+empresaUsuarioItem.getTecnologia().getId());
 				if(empresaUsuarioItem.getTecnologia().getId()==null)
 					descricaoEui =empresaUsuarioItem.getTecnologia().getDescricao();
 					for (Tecnologia tecnologia : t) {
