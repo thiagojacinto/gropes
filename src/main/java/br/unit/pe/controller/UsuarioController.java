@@ -199,10 +199,13 @@ public class UsuarioController {
 						//eui.setEmpUsu(empresaUsuarioBd);
 						eui.setEmpUsu(eu);
 						
-						//String descricaoTecnologia = tecDTO.getTecnologia();
-						//Tecnologia t = registroService.findTecnologiaByDescricao(descricaoTecnologia);
-						Tecnologia t = new Tecnologia();
-						t.setDescricao(tecDTO.getTecnologia());
+						String descricaoTecnologia = tecDTO.getTecnologia();
+						Tecnologia t = registroService.findTecnologiaByDescricao(descricaoTecnologia);
+						if(t==null) {
+							t = new Tecnologia();
+							t.setDescricao(descricaoTecnologia);
+							
+						}
 						eui.setTecnologia(t);
 						eui.setFrequencia(tecDTO.getFrequenciaDeUso());
 						eui.setUtilizaAtual(tecDTO.getUtilizaAtual()?'S':'N');
