@@ -156,8 +156,8 @@ public class UsuarioController {
 						
 						String descricaoTecnologia = tecDTO.getTecnologia();
 						Tecnologia t = registroService.findTecnologiaByDescricao(descricaoTecnologia);
-						System.out.println("DEBUG:"+descricaoTecnologia);
-						System.out.println("DEBUG:" +t);
+						//System.out.println("DEBUG:"+descricaoTecnologia);
+						//System.out.println("DEBUG:" +t);
 						if(t == null){
 							t = new Tecnologia();
 							t.setDescricao(tecDTO.getTecnologia());
