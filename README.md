@@ -1,12 +1,12 @@
 # GROPES API
-API da aplicação [IODev](https://github.com/thiagojacinto/gropes-ui), que utiliza da metodologia GROPES para avaliação da obsolescência relativa entre pessoas desenvolvedoras.
+API da aplicação [IODev](https://github.com/thiagojacinto/gropes-ui), que utiliza da metodologia GROPES,implantada no [BD](gropes.sql), para avaliação da obsolescência relativa entre pessoas desenvolvedoras. A api roda um cronjob à cada 5 minutos para executar as procedures do BD e atualizar os dados(caso haja alteração), além de cadastrar os desenvolvedores, etc.
 
 # Requisitos
 Para construir e executar o aplicativo, você precisa de:
 
 * [JDK 11](https://openjdk.java.net/projects/jdk/11/)
 * Maven,embutido na aplicação
-* SGBD Firebird
+* SGBD PostgreSql
 
 # Executando o aplicativo localmente
 Existem várias maneiras de executar um aplicativo Spring Boot em sua máquina local. Uma maneira é executar o método main na classe br.unit.pe.GropesApplication da sua IDE.
