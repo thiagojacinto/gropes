@@ -1,11 +1,13 @@
 package br.unit.pe.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.unit.pe.exception.DataInvalidaException;
 import br.unit.pe.exception.EmailJaExistenteException;
 import br.unit.pe.exception.ListaVaziaException;
 import br.unit.pe.exception.UserJaExistenteException;
@@ -36,6 +38,9 @@ public class UsuarioService {
 		}
 		if(findByEmail(usuario.getEmail()).isPresent()) {
 			throw new EmailJaExistenteException(); 
+		}
+		if(usuario.getNascimento().compareTo(new Date())>0) {
+			throw new DataInvalidaException(usuario.getNascimento(),"A data de nascimento precisa ser menor ou igual à data atual.Data de nascimento:");
 		}
 		return usuarioRepository.save(usuario);
 	}
