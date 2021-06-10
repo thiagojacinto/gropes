@@ -32,6 +32,10 @@ public class GropesApplication {
 				registry.addMapping("/**")
 				.allowedOrigins("https://thiagojacinto.github.io")
 				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+				
+				registry.addMapping("/**")
+				.allowedOrigins("https://iodev.netlify.app")
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 			}
 		};
 	}
